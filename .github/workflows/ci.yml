@@ -28,7 +28,7 @@ jobs:
           echo "No linter configured yet"
 
       - name: Run unit tests
-        run: npx vitest run --reporter=dot
+        run: npx vitest run --config vite.config.test.js --reporter=dot
 
       - name: Build
         run: npm run build
