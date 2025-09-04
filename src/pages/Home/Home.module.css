@@ -1,0 +1,5 @@
+.home { padding: 1rem; }
+.home__header { margin-bottom: 1rem; }
+.weather-content { margin-top: 1rem; }
+.error-message { color: var(--error-color); }
+.loading { color: var(--secondary-color); }

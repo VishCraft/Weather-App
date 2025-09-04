@@ -1,0 +1,9 @@
+.btn { display:inline-flex; align-items:center; justify-content:center; border-radius:8px; font-weight:500; transition:all .2s ease-in-out; cursor:pointer; border:1px solid transparent; }
+.btn--primary { background:#3b82f6; color:#fff; }
+.btn--outline { background:transparent; color:inherit; border-color:#e2e8f0; }
+.btn--sm { padding:.5rem 1rem; font-size:.875rem; }
+.btn--md { padding:.75rem 1.5rem; font-size:1rem; }
+.btn--disabled { opacity:.6; cursor:not-allowed; }
+.btn--loading { opacity:.8; }
+.spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg) } }

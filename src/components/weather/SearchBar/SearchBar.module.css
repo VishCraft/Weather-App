@@ -1,0 +1,7 @@
+.search-bar { margin: 1rem 0; }
+.search-form { display:flex; gap:.5rem; }
+.search-input-container { display:flex; gap:.5rem; }
+.search-input { padding:.5rem .75rem; border:1px solid var(--border); border-radius:8px; }
+.suggestions { list-style:none; margin:.5rem 0 0; padding:0; border:1px solid var(--border); border-radius:8px; background: var(--surface); }
+.suggestions li { padding:.5rem .75rem; cursor:pointer; }
+.suggestions li:hover { background: #f1f5f9; }
