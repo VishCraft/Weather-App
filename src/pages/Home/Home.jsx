@@ -8,7 +8,7 @@ import { useWeather } from '../../hooks/useWeather';
 import { useGeolocation } from '../../hooks/useGeolocation';
 import { addToFavorites } from '../../store/slices/weatherSlice';
 import { weatherApi } from '../../services/api/weatherApi';
-import './Home.module.css';
+import styles from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -45,8 +45,8 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
-      <div className="home__header">
+    <div className={styles['home']}>
+      <div className={styles['home__header']}>
         <h1>Weather App</h1>
         <p>Get current weather and forecasts for any city</p>
       </div>
@@ -59,19 +59,19 @@ const Home = () => {
   <LocationPicker onPick={handleSearch} />
 
       {error && (
-        <div className="error-message">
+        <div className={styles['error-message']}>
           <p>⚠️ {error}</p>
         </div>
       )}
 
       {loading && (
-        <div className="loading">
+        <div className={styles['loading']}>
           <p>Loading weather data...</p>
         </div>
       )}
 
       {currentWeather && (
-        <div className="weather-content">
+        <div className={styles['weather-content']}>
           <WeatherCard 
             weather={currentWeather}
             onAddToFavorites={handleAddToFavorites}

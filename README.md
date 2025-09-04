@@ -9,6 +9,7 @@ A modern, fast, and clean weather application built with React and Vite. It fetc
 - API layer with Axios and interceptors
 - Theming with light/dark toggle (persisted)
 - WeatherCard with temperatures in °C and °F
+- Animated WeatherCard with condition-based gradients
 - Forecast list preview
 - Vitest + Testing Library setup
 - GitHub Actions CI (install, test, build)
@@ -58,10 +59,11 @@ VITE_OPENWEATHER_API_KEY=your_real_key
 ```
 
 ## Development
-Start the dev server (default: http://localhost:3000):
+Start the dev server (Vite will use 3000 or the next free port, e.g. 3001):
 ```sh
 npm run dev
 ```
+Check the terminal output for the actual URL, e.g. `http://localhost:3000/` or `http://localhost:3001/`.
 
 ## Build & Preview
 Production build:
@@ -83,6 +85,19 @@ Open the interactive UI runner:
 npm run test:ui
 ```
 Vitest config: `vite.config.test.js`
+
+## Styling and CSS Modules
+- Components use CSS Modules. Import the stylesheet and use the generated `styles` object:
+
+```jsx
+import styles from './Component.module.css';
+
+export const Component = () => (
+  <div className={styles.container}>Hello</div>
+);
+```
+- Global styles live in `src/styles/globals.css`.
+- WeatherCard now applies animated, condition-based gradients (sunny, clouds, rain, snow, thunder, mist) and a subtle entrance animation.
 
 ## Environment Variables
 - `VITE_OPENWEATHER_API_KEY` — your OpenWeather API key
@@ -114,6 +129,8 @@ GitHub Actions workflow at `.github/workflows/ci.yml` runs install, tests, and b
 - Port in use: run `npm run dev -- --port 3001` or stop the other process.
 - Env not picked up: ensure `.env` exists and restart the dev server after changes.
 - Tests fail with ESM plugin errors: tests use `vite.config.test.js` (no plugin import). Run `npm test`.
+- UI styles not applying: ensure components import CSS Modules as `import styles from '...module.css'` and reference classes via `styles["class-name"]` or `styles.className`.
+- Not seeing the WeatherCard: search for a city first so current weather loads and the card renders.
 - Clean install issues:
 ```sh
 rm -rf node_modules package-lock.json

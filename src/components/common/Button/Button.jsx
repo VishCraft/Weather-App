@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.module.css';
+import styles from './Button.module.css';
 
 export const Button = ({ 
   children, 
@@ -10,11 +10,11 @@ export const Button = ({
   ...props 
 }) => {
   const classes = [
-    'btn',
-    `btn--${variant}`,
-    `btn--${size}`,
-    disabled && 'btn--disabled',
-    loading && 'btn--loading',
+    styles['btn'],
+    styles[`btn--${variant}`],
+    styles[`btn--${size}`],
+    disabled && styles['btn--disabled'],
+    loading && styles['btn--loading'],
   ].filter(Boolean).join(' ');
 
   return (
@@ -23,7 +23,7 @@ export const Button = ({
       disabled={disabled || loading}
       {...props}
     >
-      {loading ? <span className="spinner" /> : children}
+  {loading ? <span className={styles['spinner']} /> : children}
     </button>
   );
 };
