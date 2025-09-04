@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { Button } from '../../common/Button';
-import './SearchBar.module.css';
+import styles from './SearchBar.module.css';
 
 export const SearchBar = ({ onSearch, onUseLocation }) => {
   const [query, setQuery] = useState('');
@@ -24,15 +24,15 @@ export const SearchBar = ({ onSearch, onUseLocation }) => {
   };
 
   return (
-    <div className="search-bar">
-      <form onSubmit={handleSubmit} className="search-form">
-        <div className="search-input-container">
+    <div className={styles['search-bar']}>
+      <form onSubmit={handleSubmit} className={styles['search-form']}>
+        <div className={styles['search-input-container']}>
           <input
             type="text"
             placeholder="Enter city name..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="search-input"
+            className={styles['search-input']}
           />
           <Button type="submit" size="sm">
             Search
@@ -40,14 +40,14 @@ export const SearchBar = ({ onSearch, onUseLocation }) => {
         </div>
       </form>
 
-      <div className="search-actions">
+      <div className={styles['search-actions']}>
         <Button variant="outline" size="sm" onClick={onUseLocation}>
           📍 Use My Location
         </Button>
       </div>
 
       {suggestions.length > 0 && (
-        <ul className="suggestions">
+        <ul className={styles['suggestions']}>
           {suggestions.map((suggestion, index) => (
             <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
               {suggestion}

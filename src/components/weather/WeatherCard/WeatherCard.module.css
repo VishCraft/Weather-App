@@ -1,7 +1,36 @@
-.weather-card { background: var(--surface); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); border:1px solid rgba(226,232,240,.4); border-radius:14px; padding:1.25rem; box-shadow: var(--shadow); }
+.weather-card { position: relative; overflow: hidden; background: var(--surface); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur); border:1px solid rgba(226,232,240,.4); border-radius:14px; padding:1.25rem; box-shadow: var(--shadow); }
 .weather-card__header { display:flex; justify-content:space-between; align-items:center; }
+.weather-card__location { font-size: 1.125rem; font-weight: 700; }
 .weather-card__main { display:flex; align-items:center; gap:1rem; margin-top:.5rem; }
 .weather-card__temperature { font-size:2.25rem; font-weight:800; letter-spacing:-0.02em; }
+.weather-card__condition { display:flex; align-items:center; gap:.5rem; }
 .weather-card__details { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem; margin-top:1rem; }
 .detail-item { display:flex; justify-content:space-between; }
 .weather-card__footer { margin-top:.5rem; color: var(--text-secondary); }
+
+/* Animated background accent */
+.weather-card::after {
+	content: "";
+	position: absolute;
+	inset: -40% -40% auto auto;
+	width: 65%;
+	height: 120%;
+	background: radial-gradient(600px 300px at 100% 0%, rgba(99,102,241,0.25), transparent 60%);
+	transform: rotate(12deg);
+	pointer-events: none;
+}
+
+/* Condition variants */
+.is-sunny { background-image: linear-gradient(135deg, rgba(253,224,71,0.12), rgba(251,191,36,0.08)); }
+.is-clouds { background-image: linear-gradient(135deg, rgba(148,163,184,0.15), rgba(203,213,225,0.08)); }
+.is-rain { background-image: linear-gradient(135deg, rgba(56,189,248,0.16), rgba(99,102,241,0.10)); }
+.is-snow { background-image: linear-gradient(135deg, rgba(148,163,184,0.18), rgba(226,232,240,0.12)); }
+.is-thunder { background-image: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(251,146,60,0.10)); }
+.is-mist { background-image: linear-gradient(135deg, rgba(203,213,225,0.18), rgba(148,163,184,0.12)); }
+.is-default { background-image: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(56,189,248,0.08)); }
+
+.condition-text { font-weight: 700; color: var(--text-secondary); }
+
+/* Subtle entrance animation */
+.animate-in { animation: card-in .5s ease forwards; opacity: 0; transform: translateY(6px) scale(0.99); }
+@keyframes card-in { to { opacity: 1; transform: translateY(0) scale(1); } }
